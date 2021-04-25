@@ -73,15 +73,6 @@ export class AdminProductComponent implements OnInit {
     (this.product_price=='' || this.product_price==undefined  || this.product_price==null) ||
     (this.product_quantity=='' || this.product_quantity==undefined  || this.product_quantity==null)){
       error=true; 
-    }else if(this.product_name!='' && this.product_name!=undefined  && this.product_name!=null) {
-      let name=this.product_name;
-      var r = this.ProductList.filter(function(item:any) {
-        return item.product_name==name;
-      });
-      if (r.length > 0){
-        error=true; 
-        this.isProductExist=true;
-      }
     }
     if(!error){
     let json = { product_name: this.product_name, product_price: this.product_price, 
@@ -106,15 +97,6 @@ export class AdminProductComponent implements OnInit {
     (this.product_price=='' || this.product_price==undefined  || this.product_price==null) ||
     (this.product_quantity=='' || this.product_quantity==undefined  || this.product_quantity==null)){
       error=true; 
-    }else if(this.product_name!='' && this.product_name!=undefined  && this.product_name!=null) {
-      let name=this.product_name;
-      var r = this.ProductList.filter(function(item:any) {
-        return item.product_name==name;
-      });
-      if (r.length > 1){
-        error=true; 
-        this.isProductExist=true;
-      }
     }
     if(!error){
     let json = { _id: this.id, product_name: this.product_name, 

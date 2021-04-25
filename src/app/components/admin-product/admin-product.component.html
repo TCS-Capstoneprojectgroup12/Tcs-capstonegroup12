@@ -63,9 +63,7 @@ aria-hidden="true"  data-backdrop="static" data-keyboard="false">
       <div class="md-form mb-5" *ngIf="submitted && product_name==''">
        <span style="color:red"> Product Name is required</span>
         </div>
-        <div class="md-form mb-5" *ngIf="submitted && isProductExist">
-            <span style="color:red"> Product Name already exist</span>
-             </div>
+       
       <div class="md-form mb-5">
         Price <span style="color:red">*</span>
         <input type="number" id="price" class="form-control validate" [(ngModel)]="product_price">       
