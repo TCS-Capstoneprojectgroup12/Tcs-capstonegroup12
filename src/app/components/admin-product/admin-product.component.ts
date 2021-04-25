@@ -9,6 +9,7 @@ declare var $: any;
 })
 export class AdminProductComponent implements OnInit {
   @ViewChild('closeBtn', { static: false }) closeBtn: any;
+  @ViewChild('delcloseBtn', { static: false }) delcloseBtn: any;
   ProductList :any;
   constructor(public router: Router,private service: CommonService) { }
   isAdd = false;
@@ -35,7 +36,6 @@ export class AdminProductComponent implements OnInit {
     this.discount= productdetails.discount;
     this.isAdd = false;
     this.submitted = false;
-    this.isProductExist=false;
   }
 
 
@@ -47,6 +47,7 @@ export class AdminProductComponent implements OnInit {
     this.closeBtn.nativeElement.click();
     this.service.deleteProduct({id:this.id}).subscribe((result: any) => {
       if(result.status== 'success'){ 
+        this.delcloseBtn.nativeElement.click();
       this.getProduct();
     }
     alert(result.data);
@@ -60,11 +61,10 @@ export class AdminProductComponent implements OnInit {
     this.product_quantity = "";
     this.id = "";
     this.isAdd = true;
-    this.submitted = false;
-    this.isProductExist=false;
+    this.submitted = false;    
+    this.discount="";
   }
   submitted = false;
-  isProductExist=false;
   save() {
     this.submitted = true;
     let error=false;
