@@ -1,0 +1,119 @@
+<div class="bg">
+    <button class="btn" style="float:right;color: rgb(158, 103, 21);font-size: 20px;" (click)="logout()"><b>Logout</b></button>
+    <button class="btn" style="float:right;color: rgb(43 35 165);font-size: 20px;" (click)="employeeDetails()"><b>Employee Details</b></button>
+    <button class="btn" style="float:right;color: rgb(233, 30, 30);font-size: 20px;" (click)="viewRequest()"><b>View Request</b></button>
+<br><br>
+
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h2> <b>Product Details</b></h2>
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-info add-new" (click)="add()" data-toggle="modal" data-target="#productForm"><i
+                                class="fas fa-plus"></i> Add Product</button>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Discount</th>  
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let productDetails of ProductList">
+                        <td><span>{{productDetails.product_name}}</span> </td>
+                        <td><span>{{productDetails.product_price}}</span></td>
+                        <td><span>{{productDetails.product_quantity}}</span></td>
+                        <td><span>{{productDetails.discount}}</span></td> 
+                        <td><a (click)="edit(productDetails)"   data-toggle="modal" data-target="#productForm" style="color:green"><i class="fas fa-edit" aria-hidden="true" ></i></a>                          
+                            <a (click)="delete(productDetails)" data-toggle="modal" data-target="#deleteForm" style="color:red"><i class="fas fa-trash" aria-hidden="true"></i></a> 
+                        </td>
+                    </tr>                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    
+<div class="modal fade" id="productForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header text-center">
+      <h4 class="modal-title w-100 font-weight-bold" *ngIf="isAdd">Add Product</h4>
+      <h4 class="modal-title w-100 font-weight-bold" *ngIf="!isAdd">Edit Product</h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body mx-3">
+      <div class="md-form mb-5">
+        Product Name <span style="color:red">*</span>
+        <input type="text" id="orangeForm-name" class="form-control validate" [(ngModel)]="product_name">       
+      </div>
+      <div class="md-form mb-5" *ngIf="submitted && product_name==''">
+       <span style="color:red"> Product Name is required</span>
+        </div>
+        <div class="md-form mb-5" *ngIf="submitted && isProductExist">
+            <span style="color:red"> Product Name already exist</span>
+             </div>
+      <div class="md-form mb-5">
+        Price <span style="color:red">*</span>
+        <input type="number" id="price" class="form-control validate" [(ngModel)]="product_price">       
+      </div>
+      <div class="md-form mb-5" *ngIf="submitted && product_price==''">
+        <span style="color:red"> Price is required</span>
+         </div>
+      <div class="md-form mb-4">
+        Quantity<span style="color:red">*</span>
+        <input type="number" id="qualiity" class="form-control validate" [(ngModel)]="product_quantity">        
+      </div>
+      <div class="md-form mb-5"  *ngIf="submitted && product_quantity==''">
+        <span style="color:red"> Quantity is required</span>
+         </div>
+      <div class="md-form mb-4">
+        Discount
+        <input type="number" id="discount" class="form-control validate" [(ngModel)]="discount">        
+      </div>
+    </div>
+    <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-primary" (click)="save()" *ngIf="isAdd">Save</button>
+        <button type="button" class="btn btn-primary" (click)="update()" *ngIf="!isAdd">Update</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Cancel</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="deleteForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true"   data-backdrop="static" data-keyboard="false">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Delete Product</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeBtn>
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+			 
+			<div class="modal-body">
+                <h4 class="modal-title w-100">Are you sure?</h4><br>
+				<p>Do you really want to delete these records? This process cannot be undone.</p>
+			</div>
+			<div class="modal-footer justify-content-center">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-danger" (click)="deleteProduct()">Delete</button>
+			</div>
+		</div>
+	</div>
+</div>     

@@ -1,0 +1,35 @@
+ngb-carousel .wrapper {
+    position: relative;
+    height: 0;
+    padding-top: 55%; /* Keep ratio for 900x500 images */
+  }
+  
+  ngb-carousel .wrapper>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  @import url('https://fonts.googleapis.com/css?family=Numans');
+
+  body, html {
+    height: 100%;
+    margin: 0;
+  }
+  /*background for html page*/
+  
+  .bg {
+    /* The image used */
+    background-image:  url("/assets/img/img1.jpg");
+  
+    /* Full height */
+    height: 100vh; 
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+ 

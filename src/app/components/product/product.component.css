@@ -1,8 +1,9 @@
-.bg-img {
+.bg {
     /* The image used */
-    background-image:  url("/assets/img/img1.jpg");
+    background-image:  url("/assets/img/img2.jpg");
   
-    min-height: 380px;
+    /* Full height */
+    height: 100vh; 
   
     /* Center and scale the image nicely */
     background-position: center;
@@ -10,8 +11,4 @@
     background-size: cover;
     position: relative;
   }
-  body, html {
-    height: 100%;
-  }
-  
-  
+ 

@@ -1,0 +1,26 @@
+ 
+    
+<div class="bg">
+    <button  class="btn"  style="float:right;color: white;font-size: 20px;"  (click)="adminloginpage()">Admin</button>
+    <button   class="btn"  style="float:right;color: white;font-size: 20px;"  (click)="userloginpage()">User</button>
+    <button   class="btn"  style="float:right;color: white;font-size: 20px;" (click)="employyloginpage()">Employee</button>
+ 
+    <div  *ngIf="logintype=='Admin'">
+        <app-admin-login></app-admin-login>
+        
+        </div>
+ 
+ 
+<div  *ngIf="logintype=='Employee'">
+<app-employee-login></app-employee-login>
+
+</div>
+<div  *ngIf="logintype=='User'">
+<app-user-login></app-user-login>
+
+</div>
+
+</div>
+
+
+ 
